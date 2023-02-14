@@ -9,15 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Augmento.Presentation", "Au
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Augmento.Tests", "Augmento.Tests", "{F6A3DBB8-73D7-4E77-B9BE-53A41E33005B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agumento.Core.Domain", "D:\Internal Project\AugmentoJobPortal\src\production\Agumento.Core.Domain\Agumento.Core.Domain.csproj", "{DD0FAAD6-8251-4CFE-9175-E065FCCD01C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agumento.Core.Domain", ".\production\Agumento.Core.Domain\Agumento.Core.Domain.csproj", "{DD0FAAD6-8251-4CFE-9175-E065FCCD01C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agumento.Core.Application", "D:\Internal Project\AugmentoJobPortal\src\production\Agumento.Core.Application\Agumento.Core.Application.csproj", "{CEEC94FD-38F9-4554-8BE0-4BC12EEBDDB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agumento.Core.Application", ".\production\Agumento.Core.Application\Agumento.Core.Application.csproj", "{CEEC94FD-38F9-4554-8BE0-4BC12EEBDDB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Augmento.Infrastructure", "Augmento.Infrastructure", "{0C0FADC3-7ACE-4A2B-AF7F-F50313E69D81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Augmento.Infrastructure.Persistence", "D:\Internal Project\AugmentoJobPortal\src\production\Augmento.Infrastructure.Persistence\Augmento.Infrastructure.Persistence.csproj", "{A052C79D-5AA4-4F9F-8C02-C90A4F707EA5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Augmento.Infrastructure.Persistence", ".\production\Augmento.Infrastructure.Persistence\Augmento.Infrastructure.Persistence.csproj", "{A052C79D-5AA4-4F9F-8C02-C90A4F707EA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Augmento.Presentation.API", "D:\Internal Project\AugmentoJobPortal\src\production\Augmento.Presentation.API\Augmento.Presentation.API.csproj", "{19D459AC-D2A8-477B-90D3-8AACF055FF2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Augmento.Presentation.API", ".\production\Augmento.Presentation.API\Augmento.Presentation.API.csproj", "{19D459AC-D2A8-477B-90D3-8AACF055FF2E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
