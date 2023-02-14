@@ -1,13 +1,8 @@
 ﻿using Agumento.Core.Application.Interfaces;
 using Agumento.Core.Domain;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Agumento.Core.Application.Features.JobOpeningFeatures.Queries
+namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
 {
     public class GetAllOpenPositionsByIdQuery : IRequest<OpenPosition>
     {

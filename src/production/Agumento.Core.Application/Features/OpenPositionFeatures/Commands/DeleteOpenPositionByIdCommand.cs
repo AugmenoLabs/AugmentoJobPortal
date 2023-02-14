@@ -1,26 +1,21 @@
 ﻿using Agumento.Core.Application.Interfaces;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Agumento.Core.Application.Features.JobOpeningFeatures.Commands
+namespace Agumento.Core.Application.Features.OpenPositionFeatures.Commands
 {
-    public class DeleteJobOpeningByIdCommand : IRequest<Guid>
+    public class DeleteOpenPositionByIdCommand : IRequest<Guid>
     {
         public Guid Id { get; set; }
 
-        public class DeleteJobOpeningByIdCommandHandler : IRequestHandler<DeleteJobOpeningByIdCommand, Guid>
+        public class DeleteOpenPositionByIdCommandHandler : IRequestHandler<DeleteOpenPositionByIdCommand, Guid>
         {
             private readonly IApplicationDbContext _context;
-            public DeleteJobOpeningByIdCommandHandler(IApplicationDbContext context)
+            public DeleteOpenPositionByIdCommandHandler(IApplicationDbContext context)
             {
                 _context = context;
             }
-            public async Task<Guid> Handle(DeleteJobOpeningByIdCommand command, CancellationToken cancellationToken)
+            public async Task<Guid> Handle(DeleteOpenPositionByIdCommand command, CancellationToken cancellationToken)
             {
                 var openPosition = await _context.OpenPositions.Where(a => a.Id == command.Id).FirstOrDefaultAsync();
 

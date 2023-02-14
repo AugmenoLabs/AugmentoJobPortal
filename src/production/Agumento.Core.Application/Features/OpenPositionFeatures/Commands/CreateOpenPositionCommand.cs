@@ -2,15 +2,10 @@
 using Agumento.Core.Domain;
 using AutoMapper;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Agumento.Core.Application.Features.JobOpeningFeatures.Commands
+namespace Agumento.Core.Application.Features.OpenPositionFeatures.Commands
 {
-    public class CreateJobOpeningCommand : IRequest<Guid>
+    public class CreateOpenPositionCommand : IRequest<Guid>
     {
        public Guid Id { get; set; }
        public long JobId { get; set; }
@@ -35,16 +30,16 @@ namespace Agumento.Core.Application.Features.JobOpeningFeatures.Commands
         public string? Location { get; set; }
 
 
-        public class CreateJobOpeningCommandHandler : IRequestHandler<CreateJobOpeningCommand, Guid>
+        public class CreateOpenPositionCommandHandler : IRequestHandler<CreateOpenPositionCommand, Guid>
         {
             private readonly IApplicationDbContext _context;
             private readonly IMapper _mapper;
-            public CreateJobOpeningCommandHandler(IApplicationDbContext context, IMapper mapper)
+            public CreateOpenPositionCommandHandler(IApplicationDbContext context, IMapper mapper)
             {
                 _context = context;
                 _mapper = mapper;
             }
-            public async Task<Guid> Handle(CreateJobOpeningCommand request, CancellationToken cancellationToken)
+            public async Task<Guid> Handle(CreateOpenPositionCommand request, CancellationToken cancellationToken)
             {
                 OpenPosition openPosition = _mapper.Map<OpenPosition>(request);
                 

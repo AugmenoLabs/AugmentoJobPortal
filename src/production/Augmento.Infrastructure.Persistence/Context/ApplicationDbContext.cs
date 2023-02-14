@@ -1,11 +1,6 @@
 ﻿using Agumento.Core.Application.Interfaces;
 using Agumento.Core.Domain;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Augmento.Infrastructure.Persistence.Context
 {

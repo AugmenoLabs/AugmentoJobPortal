@@ -1,25 +1,25 @@
-﻿using Agumento.Core.Application.Features.JobOpeningFeatures.Commands;
-using Agumento.Core.Application.Features.JobOpeningFeatures.Queries;
+﻿using Agumento.Core.Application.Features.OpenPositionFeatures.Commands;
+using Agumento.Core.Application.Features.OpenPositionFeatures.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Augmento.Presentation.API.Controllers
 {
-    public class JobOpeningController : BaseApiController
+    public class OpenPositionController : BaseApiController
     {
         /// <summary>
-        /// Creates a New JobOpening.
+        /// Creates a New OpenPosition.
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Create(CreateJobOpeningCommand command)
+        public async Task<IActionResult> Create(CreateOpenPositionCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
         /// <summary>
-        /// Gets all JobOpenings.
+        /// Gets all OpenPosition.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -29,7 +29,7 @@ namespace Augmento.Presentation.API.Controllers
         }
 
         /// <summary>
-        /// Gets Job Opening Entity by Id.
+        /// Gets OpenPosition Entity by Id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -47,7 +47,7 @@ namespace Augmento.Presentation.API.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            return Ok(await Mediator.Send(new DeleteJobOpeningByIdCommand { Id = id }));
+            return Ok(await Mediator.Send(new DeleteOpenPositionByIdCommand { Id = id }));
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("[action]")]
-        public async Task<IActionResult> Update(Guid id, UpdateJobOpeningCommand command)
+        public async Task<IActionResult> Update(Guid id, UpdateOpenPositionCommand command)
         {
             if (id != command.Id)
             {
