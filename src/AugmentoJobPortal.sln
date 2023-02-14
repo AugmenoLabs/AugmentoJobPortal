@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Augmento.Core", "Augmento.Core", "{D1FF5663-D844-4D88-863E-99E7D4B5B5CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Augmento.Presentation", "Augmento.Presentation", "{FE519C31-71A7-44A9-AB7B-A8CEE21285E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Augmento.Tests", "Augmento.Tests", "{F6A3DBB8-73D7-4E77-B9BE-53A41E33005B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agumento.Core.Domain", "D:\Internal Project\AugmentoJobPortal\src\production\Agumento.Core.Domain\Agumento.Core.Domain.csproj", "{DD0FAAD6-8251-4CFE-9175-E065FCCD01C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agumento.Core.Application", "D:\Internal Project\AugmentoJobPortal\src\production\Agumento.Core.Application\Agumento.Core.Application.csproj", "{CEEC94FD-38F9-4554-8BE0-4BC12EEBDDB4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Augmento.Infrastructure", "Augmento.Infrastructure", "{0C0FADC3-7ACE-4A2B-AF7F-F50313E69D81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Augmento.Infrastructure.Persistence", "D:\Internal Project\AugmentoJobPortal\src\production\Augmento.Infrastructure.Persistence\Augmento.Infrastructure.Persistence.csproj", "{A052C79D-5AA4-4F9F-8C02-C90A4F707EA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Augmento.Presentation.API", "D:\Internal Project\AugmentoJobPortal\src\production\Augmento.Presentation.API\Augmento.Presentation.API.csproj", "{19D459AC-D2A8-477B-90D3-8AACF055FF2E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DD0FAAD6-8251-4CFE-9175-E065FCCD01C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD0FAAD6-8251-4CFE-9175-E065FCCD01C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD0FAAD6-8251-4CFE-9175-E065FCCD01C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD0FAAD6-8251-4CFE-9175-E065FCCD01C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEEC94FD-38F9-4554-8BE0-4BC12EEBDDB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEEC94FD-38F9-4554-8BE0-4BC12EEBDDB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEEC94FD-38F9-4554-8BE0-4BC12EEBDDB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEEC94FD-38F9-4554-8BE0-4BC12EEBDDB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A052C79D-5AA4-4F9F-8C02-C90A4F707EA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A052C79D-5AA4-4F9F-8C02-C90A4F707EA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A052C79D-5AA4-4F9F-8C02-C90A4F707EA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A052C79D-5AA4-4F9F-8C02-C90A4F707EA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19D459AC-D2A8-477B-90D3-8AACF055FF2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19D459AC-D2A8-477B-90D3-8AACF055FF2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19D459AC-D2A8-477B-90D3-8AACF055FF2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19D459AC-D2A8-477B-90D3-8AACF055FF2E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DD0FAAD6-8251-4CFE-9175-E065FCCD01C4} = {D1FF5663-D844-4D88-863E-99E7D4B5B5CB}
+		{CEEC94FD-38F9-4554-8BE0-4BC12EEBDDB4} = {D1FF5663-D844-4D88-863E-99E7D4B5B5CB}
+		{A052C79D-5AA4-4F9F-8C02-C90A4F707EA5} = {0C0FADC3-7ACE-4A2B-AF7F-F50313E69D81}
+		{19D459AC-D2A8-477B-90D3-8AACF055FF2E} = {FE519C31-71A7-44A9-AB7B-A8CEE21285E8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {782E5FF6-C9B3-446A-AA4D-EA9EE52033D8}
+	EndGlobalSection
+EndGlobal
