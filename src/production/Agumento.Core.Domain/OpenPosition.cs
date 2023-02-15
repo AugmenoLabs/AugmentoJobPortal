@@ -5,25 +5,21 @@ namespace Agumento.Core.Domain
 {
     public class OpenPosition : BaseEntity
     {
-        //[Key]
-        //public Guid Id { get; set; }
+        [Required]
+        public string JobId { get; set; }
 
         [Required]
-        public long JobId { get; set; }
-
-        public string? JobTitle { get; set; }
+        public string JobTitle { get; set; }
 
         [Display(Name = "Account")]
+        [ForeignKey("Id")]
         public virtual Guid AccountId { get; set; }
 
-        [ForeignKey("AccountId")]
-        public virtual Account Account { get; set; }
-
         [Display(Name = "Project")]
+        [ForeignKey("Id")]
         public virtual Guid ProjectId { get; set; }
 
-        [ForeignKey("ProjectId")]
-        public virtual Project Project { get; set; }
+        public string Budget { get; set; }
 
         [Required]
         public string? SkillSet { get; set; }
@@ -39,7 +35,6 @@ namespace Agumento.Core.Domain
 
         public int NoOfPositions { get; set; }
 
-        //County-State-City
         public string? Location { get; set; }
     }
 }
