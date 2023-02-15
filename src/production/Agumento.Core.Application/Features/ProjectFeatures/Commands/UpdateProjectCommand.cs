@@ -12,7 +12,7 @@ namespace Agumento.Core.Application.Features.ProjectFeatures.Commands
         public string? ProjectDetails { get; set; }
         public string? ProjectManager { get; set; }
         public virtual Guid AccountId { get; set; }
-        public virtual Account Account { get; set; }
+        //public virtual Account Account { get; set; }
 
         public class UpdateProjectCommandHandler : IRequestHandler<UpdateProjectCommand, Guid>
         {
@@ -43,9 +43,9 @@ namespace Agumento.Core.Application.Features.ProjectFeatures.Commands
 
                     project.AccountId = command.AccountId;
 
-                    project.Account = command.Account;
+                   // project.Account = command.Account;
 
-                    _context.Projects.Add(project);
+                    _context.Projects.Update(project);
                     await _context.SaveChanges();
 
                     return project.Id;

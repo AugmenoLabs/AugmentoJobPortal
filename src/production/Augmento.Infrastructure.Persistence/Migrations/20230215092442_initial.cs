@@ -71,8 +71,8 @@ namespace Augmento.Infrastructure.Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Projects", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Projects_Accounts_Id",
-                        column: x => x.Id,
+                        name: "FK_Projects_Accounts_AccountId",
+                        column: x => x.AccountId,
                         principalTable: "Accounts",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -174,6 +174,11 @@ namespace Augmento.Infrastructure.Persistence.Migrations
                 name: "IX_OpenPositions_ProjectId",
                 table: "OpenPositions",
                 column: "ProjectId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Projects_AccountId",
+                table: "Projects",
+                column: "AccountId");
         }
 
         /// <inheritdoc />

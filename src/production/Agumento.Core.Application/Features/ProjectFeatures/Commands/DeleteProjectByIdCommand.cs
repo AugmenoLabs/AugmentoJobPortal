@@ -20,7 +20,9 @@ namespace Agumento.Core.Application.Features.ProjectFeatures.Commands
                 var project = await _context.Projects.Where(a => a.Id == command.Id).FirstOrDefaultAsync();
 
                 if (project == null) return default;
-                _context.Projects.Remove(project);
+                // _context.Projects.Remove(project);
+                project.IsDeleted = true;
+                _context.Projects.Update(project);
 
                 await _context.SaveChanges();
                 return project.Id;

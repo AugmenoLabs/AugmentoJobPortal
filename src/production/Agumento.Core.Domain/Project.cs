@@ -17,9 +17,8 @@ namespace Agumento.Core.Domain
         public string ProjectManager { get; set; }
 
         [Display(Name = "Account")]
-        public virtual Guid AccountId { get; set; }
 
         [ForeignKey("Id")]
-        public virtual Account Account { get; set; }
+        public virtual Guid AccountId { get; set; }
     }
 }
