@@ -37,7 +37,7 @@ namespace Agumento.Core.Application.Features.AccountFeatures.Commands
                     account.AccountDetails = command.AccountDetails;
                     account.AccountManager = command.AccountManager;
 
-                    _context.Accounts.Add(account);
+                    _context.Accounts.Update(account);
                     await _context.SaveChanges();
 
                     return account.Id;

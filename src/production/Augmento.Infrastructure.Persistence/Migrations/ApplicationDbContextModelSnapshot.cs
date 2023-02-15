@@ -207,6 +207,7 @@ namespace Augmento.Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Agumento.Core.Domain.Project", b =>
                 {
                     b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
                     b.Property<Guid>("AccountId")
@@ -243,6 +244,8 @@ namespace Augmento.Infrastructure.Persistence.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AccountId");
 
                     b.ToTable("Projects");
                 });
@@ -327,13 +330,16 @@ namespace Augmento.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Agumento.Core.Domain.Project", b =>
                 {
-                    b.HasOne("Agumento.Core.Domain.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("Id")
+                    b.HasOne("Agumento.Core.Domain.Account", null)
+                        .WithMany("Projects")
+                        .HasForeignKey("AccountId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
 
-                    b.Navigation("Account");
+            modelBuilder.Entity("Agumento.Core.Domain.Account", b =>
+                {
+                    b.Navigation("Projects");
                 });
 #pragma warning restore 612, 618
         }
