@@ -50,5 +50,7 @@ namespace Agumento.Core.Domain
 
         public bool HasOfferLetter { get; set; }
 
+        public string Resume { get; set; } //Need to change as per Db type 
+
     }
 }

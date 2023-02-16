@@ -4,9 +4,6 @@ namespace Agumento.Core.Domain
 {
     public class Vendor : BaseEntity
     {
-        //[Key]
-        //public Guid VendorId { get; set; }
-
         public string? VendorName { get; set; }
 
         [Required]
@@ -17,5 +14,7 @@ namespace Agumento.Core.Domain
 
         [Required]
         public string? SPOCEmail { get; set; }
+
+        public virtual ICollection<CandidateProfile> CandidateProfiles { get; set; }
     }
 }

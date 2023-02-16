@@ -36,5 +36,7 @@ namespace Agumento.Core.Domain
         public int NoOfPositions { get; set; }
 
         public string? Location { get; set; }
+
+        public virtual ICollection<CandidateProfile> CandidateProfiles { get; set; }
     }
 }
