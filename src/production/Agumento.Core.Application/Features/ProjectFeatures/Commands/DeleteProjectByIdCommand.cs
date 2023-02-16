@@ -8,10 +8,10 @@ namespace Agumento.Core.Application.Features.ProjectFeatures.Commands
     {
         public Guid Id { get; set; }
 
-        public class DeleteAccountByIdCommandHandler : IRequestHandler<DeleteProjectByIdCommand, Guid>
+        public class DeleteProjectIdCommandHandler : IRequestHandler<DeleteProjectByIdCommand, Guid>
         {
             private readonly IApplicationDbContext _context;
-            public DeleteAccountByIdCommandHandler(IApplicationDbContext context)
+            public DeleteProjectIdCommandHandler(IApplicationDbContext context)
             {
                 _context = context;
             }

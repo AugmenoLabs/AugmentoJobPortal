@@ -1,63 +1,53 @@
-﻿using Agumento.Core.Application.Features.OpenPositionFeatures.Commands;
-using Agumento.Core.Application.Features.OpenPositionFeatures.Queries;
+﻿using Agumento.Core.Application.Features.CandidateInterviewFeatures.Commands;
+using Agumento.Core.Application.Features.CandidateInterviewFeatures.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Augmento.Presentation.API.Controllers
 {
-    public class OpenPositionController : BaseApiController
+    public class CandidateInterviewController : BaseApiController
     {
         /// <summary>
-        /// Creates a New OpenPosition.
+        /// Creates a New CandidateInterview.
         /// </summary>
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Create(CreateOpenPositionCommand command)
+        public async Task<IActionResult> Create(CreateCandidateInterviewCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
 
         /// <summary>
-        /// Gets all OpenPosition.
+        /// Gets all CandidateInterviews.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await Mediator.Send(new GetAllOpenPositionsQuery()));
+            return Ok(await Mediator.Send(new GetAllCandidateInterviewsQuery()));
         }
 
         /// <summary>
-        /// Gets all OpenPositions report.
-        /// </summary>
-        /// <returns></returns>
-        //[HttpGet]
-        //public async Task<IActionResult> GetAllOpenPositionsReport()
-        //{
-        //    return Ok(await Mediator.Send(new GetAllOpenPositionsQuery()));
-        //}
-
-        /// <summary>
-        /// Gets OpenPosition Entity by Id.
+        /// Gets Accounr Entity by Id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
-            return Ok(await Mediator.Send(new GetAllOpenPositionsByIdQuery { Id = id }));
+            return Ok(await Mediator.Send(new GetCandidateInterviewByIdQuery { Id = id }));
         }
 
         /// <summary>
-        /// Deletes JobOpening Entity based on Id.
+        /// Deletes CandidateInterview Entity based on Id.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
-            return Ok(await Mediator.Send(new DeleteOpenPositionByIdCommand { Id = id }));
+            return Ok(await Mediator.Send(new DeleteCandidateInterviewByIdCommand { Id = id }));
         }
 
         /// <summary>
@@ -67,7 +57,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("[action]")]
-        public async Task<IActionResult> Update(Guid id, UpdateOpenPositionCommand command)
+        public async Task<IActionResult> Update(Guid id, UpdateCandidateInterviewCommand command)
         {
             if (id != command.Id)
             {

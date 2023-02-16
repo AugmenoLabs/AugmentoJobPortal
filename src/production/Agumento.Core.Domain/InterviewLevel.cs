@@ -3,13 +3,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Agumento.Core.Domain
 {
-    public class InterviewLevel
+    public class InterviewLevel: BaseEntity
     {
-        [Key]
-        public Guid Id { get; set; }
 
         [Required]
-        public string? Screening { get; set; }
+        public string Screening { get; set; }
 
         public Levels L1 { get; set; }
 
@@ -23,11 +21,9 @@ namespace Agumento.Core.Domain
 
         public bool Onboarded { get; set; }
 
-        [ForeignKey("CandiateId")]
-        public virtual CandidateProfile CandiateProfile { get; set; }
-
-        [Display(Name = "Candiate")]
-        public virtual string CandiateId { get; set; }
+        [Display(Name = "Candidate")]
+        [ForeignKey("Id")]
+        public virtual Guid OpenPositionId { get; set; }
 
     }
 

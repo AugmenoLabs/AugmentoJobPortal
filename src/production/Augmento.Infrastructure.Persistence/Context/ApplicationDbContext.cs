@@ -15,6 +15,7 @@ namespace Augmento.Infrastructure.Persistence.Context
         public DbSet<CandidateProfile> CandidateProfiles { get; set; }
         public DbSet<OpenPosition> OpenPositions { get; set; }
         public DbSet<Vendor> Vendors { get; set; }
+        public DbSet<CandidateInterview> CandidateInterviews { get; set; }
         public async Task<int> SaveChanges()
         {
             return await base.SaveChangesAsync();

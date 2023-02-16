@@ -3,28 +3,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Agumento.Core.Domain
 {
-    public class OfferDetail
+    public class OfferDetail : BaseEntity
     {
-        [Key]
-        public Guid OfferId { get; set; }
 
-        [Display(Name = "CandidateProfile")]
+        [Display(Name = "Candidate")]
+        [ForeignKey("Id")]
         public virtual Guid CandidateId { get; set; }
 
-        [ForeignKey("CandidateId")]
-        public virtual CandidateProfile CandidateProfile { get; set; }
-
         [Display(Name = "OpenPosition")]
-        public virtual Guid Id { get; set; }
-
         [ForeignKey("Id")]
-        public virtual OpenPosition OpenPosition { get; set; }
+        public virtual Guid OpenPositionId { get; set; }
 
-        [Required]
         public string? CompanyName { get; set; }
 
         public DateTime DateOfJoining { get; set; }
 
         public string? OfferedCTC { get; set; }
+
+        public string EmploymentType { get; set; }
     }
 }
