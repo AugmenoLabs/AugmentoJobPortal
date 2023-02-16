@@ -32,11 +32,12 @@ namespace Augmento.Presentation.API.Controllers
         /// Gets all OpenPositions report.
         /// </summary>
         /// <returns></returns>
-        //[HttpGet]
-        //public async Task<IActionResult> GetAllOpenPositionsReport()
-        //{
-        //    return Ok(await Mediator.Send(new GetAllOpenPositionsQuery()));
-        //}
+        [HttpGet]
+        [Route("OpenPositionsReport")]
+        public async Task<IActionResult> GetAllOpenPositionsReport()
+        {
+            return Ok(await Mediator.Send(new GetAllOpenPositionsQuery()));
+        }
 
         /// <summary>
         /// Gets OpenPosition Entity by Id.

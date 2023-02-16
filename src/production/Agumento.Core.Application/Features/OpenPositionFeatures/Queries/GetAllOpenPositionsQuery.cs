@@ -17,7 +17,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
             public async Task<IEnumerable<OpenPosition>> Handle(GetAllOpenPositionsQuery query, CancellationToken cancellationToken)
             {
                 var openPositions = await _context.OpenPositions.ToListAsync();
-
+                
                 if (openPositions == null)
                 {
                     return null;

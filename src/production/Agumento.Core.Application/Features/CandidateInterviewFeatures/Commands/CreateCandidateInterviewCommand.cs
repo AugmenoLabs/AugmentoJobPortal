@@ -7,7 +7,6 @@ namespace Agumento.Core.Application.Features.CandidateInterviewFeatures.Commands
 {
     public class CreateCandidateInterviewCommand : IRequest<Guid>
     {
-        public Guid Id { get; set; }
         public virtual Guid CandidateId { get; set; }
         public string InterviewerName { get; set; }
         public DateTime ScheduledTime { get; set; }

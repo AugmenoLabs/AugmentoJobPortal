@@ -6,14 +6,6 @@ namespace Agumento.Core.Domain
 {
     public class CandidateInterview : BaseEntity
     {
-        [Required]
-        public string CandidateName { get; set; }
-
-
-        //[Display(Name = "OpenPosition")]
-        //[ForeignKey("Id")]
-        //public virtual Guid OpenPositionId { get; set; }
-
         [Display(Name = "CandidateProfile")]
         [ForeignKey("Id")]
         public virtual Guid CandidateId { get; set; }

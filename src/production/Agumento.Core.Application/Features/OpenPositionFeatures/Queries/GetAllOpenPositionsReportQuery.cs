@@ -18,8 +18,8 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
             {
                 var openPositionsReport = await _context.OpenPositions.ToListAsync();
                 //
-               // _context.OpenPositions.Select(o => new { o.JobId, o.JobTitle,o.NoOfPositions,o.SkillSet,o.Budget,o.Location,o.YearOfExp,o.Qualification,o.});
-               //var report= from o in _context.OpenPositions join 
+                // _context.OpenPositions.Select(o => new { o.JobId, o.JobTitle,o.NoOfPositions,o.SkillSet,o.Budget,o.Location,o.YearOfExp,o.Qualification,o.});
+                //var report= from o in _context.OpenPositions join c in _context.CandidateProfiles on o.Id equals c.Id select(new { o.JobId, o.JobTitle,o.A})
                 if (openPositionsReport == null)
                 {
                     return null;
