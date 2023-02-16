@@ -11,6 +11,7 @@ namespace Agumento.Core.Application.Features.AccountFeatures.Commands
         public string? AccountName { get; set; }
         public string? AccountDetails { get; set; }
         public string? AccountManager { get; set; }
+       
 
         public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, Guid>
         {

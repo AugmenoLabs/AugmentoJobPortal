@@ -19,7 +19,7 @@ namespace Agumento.Core.Domain
 
         public string? PermanenetAddress { get; set; }
 
-        [Required]
+        
         public string Gender { get; set; }
 
         public string? MaritalStatus { get; set; }
@@ -50,7 +50,7 @@ namespace Agumento.Core.Domain
 
         public bool HasOfferLetter { get; set; }
 
-        public string Resume { get; set; } //Need to change as per Db type 
+        public byte[] Resume { get; set; } 
 
     }
 }
