@@ -9,11 +9,12 @@ namespace Augmento.Infrastructure.Persistence.Context
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-       
+
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<CandidateProfile> CandidateProfiles { get; set; }
         public DbSet<OpenPosition> OpenPositions { get; set; }
+        public DbSet<Vendor> Vendors { get; set; }
         public async Task<int> SaveChanges()
         {
             return await base.SaveChangesAsync();

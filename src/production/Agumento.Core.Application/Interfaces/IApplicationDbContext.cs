@@ -9,6 +9,7 @@ namespace Agumento.Core.Application.Interfaces
         DbSet<Project> Projects { get; set; }
         DbSet<CandidateProfile> CandidateProfiles { get; set; }
         DbSet<OpenPosition> OpenPositions { get; set; }
+        DbSet<Vendor> Vendors { get; set; }
         Task<int> SaveChanges();
     }
 }
