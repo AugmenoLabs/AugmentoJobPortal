@@ -6,14 +6,11 @@ namespace Agumento.Core.Domain
 {
     public class CandidateProfile : BaseEntity
     {
-        //[Key]
-        //public Guid CandidateId { get; set; }
+        [Required]
+        public string CandidateName { get; set; }
 
         [Required]
-        public string? CandidateName { get; set; }
-
-        [Required]
-        public string? Email { get; set; }
+        public string Email { get; set; }
 
         [Required]
         public long ContactNumber { get; set; }
@@ -23,7 +20,7 @@ namespace Agumento.Core.Domain
         public string? PermanenetAddress { get; set; }
 
         [Required]
-        public string? Gender { get; set; }
+        public string Gender { get; set; }
 
         public string? MaritalStatus { get; set; }
 
@@ -38,16 +35,12 @@ namespace Agumento.Core.Domain
         public string? Qualification { get; set; }
 
         [Display(Name = "OpenPosition")]
-        public virtual Guid Id { get; set; }
-
         [ForeignKey("Id")]
-        public virtual OpenPosition OpenPosition { get; set; }
+        public virtual Guid OpenPositionId { get; set; }
 
         [Display(Name = "Vendor")]
+        [ForeignKey("Id")]
         public virtual Guid VendorId { get; set; }
-
-        [ForeignKey("VendorId")]
-        public virtual Vendor Vendor { get; set; }
 
         public long CurrentCTC { get; set; }
 
