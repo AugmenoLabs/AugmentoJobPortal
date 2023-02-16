@@ -16,7 +16,15 @@ namespace Agumento.Core.Application.Features.AccountFeatures.Queries
             }
             public async Task<IEnumerable<Account>> Handle(GetAllAccountsQuery query, CancellationToken cancellationToken)
             {
-                var accountList = await _context.Accounts.ToListAsync();
+                // var accountList = await _context.Accounts.ToListAsync();
+                var accountList = _context.Accounts.Select(a => new Account()
+                {
+                    AccountId = a.AccountId,
+                    AccountName = a.AccountName,
+                    AccountDetails = a.AccountDetails,
+                    AccountManager = a.AccountManager,
+                    Projects = a.Projects.ToList()
+                }).ToList();
 
                 if (accountList == null)
                 {
