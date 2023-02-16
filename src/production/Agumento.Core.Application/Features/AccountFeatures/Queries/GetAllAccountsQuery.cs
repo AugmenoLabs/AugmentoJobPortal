@@ -19,6 +19,7 @@ namespace Agumento.Core.Application.Features.AccountFeatures.Queries
                 // var accountList = await _context.Accounts.ToListAsync();
                 var accountList = _context.Accounts.Select(a => new Account()
                 {
+                    Id = a.Id,
                     AccountId = a.AccountId,
                     AccountName = a.AccountName,
                     AccountDetails = a.AccountDetails,
