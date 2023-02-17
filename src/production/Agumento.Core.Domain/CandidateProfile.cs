@@ -51,6 +51,8 @@ namespace Agumento.Core.Domain
         public bool HasOfferLetter { get; set; }
 
         public byte[] Resume { get; set; } 
+        public string FileName { get; set; } 
+        public string FileExt { get; set; } 
 
     }
 }

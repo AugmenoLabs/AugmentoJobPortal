@@ -27,6 +27,8 @@ namespace Agumento.Core.Application.Features.CandidateProfileFeatures.Commands
         public long ExpectedCTC { get; set; }
         public string NoticePeriod { get; set; }
         public bool HasOfferLetter { get; set; }
+        public string FileName { get; set; }
+        public string FileExt { get; set; }
         public byte[] Resume { get; set; }
 
         public class UpdateCandidateProfileCommandHandler : IRequestHandler<UpdateCandidateProfileCommand, Guid>
@@ -65,6 +67,8 @@ namespace Agumento.Core.Application.Features.CandidateProfileFeatures.Commands
                     candidateProfile.ExpectedCTC = command.ExpectedCTC;
                     candidateProfile.NoticePeriod = command.NoticePeriod;
                     candidateProfile.HasOfferLetter = command.HasOfferLetter;
+                    candidateProfile.FileName = command.FileName;
+                    candidateProfile.FileExt = command.FileExt;
                     candidateProfile.Resume = command.Resume;
 
                     _context.CandidateProfiles.Update(candidateProfile);

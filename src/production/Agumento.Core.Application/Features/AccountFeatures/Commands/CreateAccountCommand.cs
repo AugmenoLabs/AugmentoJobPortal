@@ -11,7 +11,7 @@ namespace Agumento.Core.Application.Features.AccountFeatures.Commands
         public string? AccountName { get; set; }
         public string? AccountDetails { get; set; }
         public string? AccountManager { get; set; }
-       
+
 
         public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, Guid>
         {
@@ -28,7 +28,8 @@ namespace Agumento.Core.Application.Features.AccountFeatures.Commands
                 {
                     // Account account = _mapper.Map<Account>(request);
                     Account account = new();
-                    account.AccountId = request.AccountId;
+                    // account.AccountId = request.AccountId;
+                    account.AccountId = AccountId();
                     account.AccountName = request.AccountName;
                     account.AccountDetails = request.AccountDetails;
                     account.AccountManager = request.AccountManager;
@@ -49,7 +50,13 @@ namespace Agumento.Core.Application.Features.AccountFeatures.Commands
                 //account.AccountDetails = request.AccountDetails;
                 //account.AccountManager = request.AccountManager;
 
-               
+
+            }
+
+            private string AccountId()
+            {
+                return "ACC-" + Convert.ToInt64(DateTime.Now.ToString("yyyyMMddHHmmss"));
+
             }
 
 
