@@ -26,7 +26,7 @@ namespace Agumento.Core.Application.Features.ScheduleInterviewFeatures.Commands
             }
             public async Task<Guid> Handle(UpdateScheduleInterviewCommand command, CancellationToken cancellationToken)
             {
-                var ScheduleInterview = _context.ScheduleInterviews.Where(a => a.Id == command.Id).Select(s => _mapper.Map<ScheduleInterview>(s)).FirstOrDefault();
+                var ScheduleInterview = _context.ScheduleInterviews.Where(a => a.Id == command.Id).FirstOrDefault();
 
                 if (ScheduleInterview == null)
                 {
@@ -36,15 +36,21 @@ namespace Agumento.Core.Application.Features.ScheduleInterviewFeatures.Commands
                 {
                     //ScheduleInterview.Id = command.Id;
 
-                    //ScheduleInterview.ScheduleInterviewName = command.ScheduleInterviewName;
+                    //var ScheduleInterview = new ScheduleInterview();
 
-                    //ScheduleInterview.ScheduleInterviewDetails = command.ScheduleInterviewDetails;
-
-                    //ScheduleInterview.ScheduleInterviewManager = command.ScheduleInterviewManager;
-
-                    //ScheduleInterview.AccountId = command.AccountId;
-
-                    // ScheduleInterview.Account = command.Account;
+                    ScheduleInterview.Title = command.Title;
+                    ScheduleInterview.InterviewerName = command.InterviewerName;
+                    ScheduleInterview.InterviewerEmail = command.InterviewerEmail;
+                    ScheduleInterview.BCCEMail = command.BCCEMail;
+                    ScheduleInterview.CCEMail = command.CCEMail;
+                    ScheduleInterview.Round = command.Round;
+                    ScheduleInterview.ScheduledTimeFrom = command.ScheduledTimeFrom;
+                    ScheduleInterview.ScheduledTimeTo = command.ScheduledTimeTo;
+                    ScheduleInterview.ModeOfInterview = command.ModeOfInterview;
+                    ScheduleInterview.ContactNumber = command.ContactNumber;
+                    ScheduleInterview.MeetingLink = command.MeetingLink;
+                    ScheduleInterview.Details = command.Details;
+                    ScheduleInterview.CandidateId = command.CandidateId;
 
                     _context.ScheduleInterviews.Update(ScheduleInterview);
                     await _context.SaveChanges();
