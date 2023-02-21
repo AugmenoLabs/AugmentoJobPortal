@@ -11,6 +11,7 @@ namespace Agumento.Core.Application.Interfaces
         DbSet<OpenPosition> OpenPositions { get; set; }
         DbSet<Vendor> Vendors { get; set; }
         DbSet<CandidateInterview> CandidateInterviews { get; set; }
+        DbSet<ScheduleInterview> ScheduleInterviews { get; set; }
         Task<int> SaveChanges();
     }
 }
