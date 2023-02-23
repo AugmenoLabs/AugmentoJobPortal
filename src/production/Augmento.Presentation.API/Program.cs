@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddAutoMapper(typeof(Program));
+//builder.Services.AddAutoMapper(typeof(Program).Assembly);
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddCors(options =>

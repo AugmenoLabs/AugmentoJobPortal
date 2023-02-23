@@ -1,4 +1,4 @@
-﻿using Agumento.Core.Application.DTO;
+﻿using response=Agumento.Core.Application.ResponseObject;
 using Agumento.Core.Application.Interfaces;
 using Agumento.Core.Domain;
 using AutoMapper;
@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Agumento.Core.Application.Features.ScheduleInterviewFeatures.Commands
 {
-    public class UpdateScheduleInterviewCommand : ScheduleInterviewDto, IRequest<Guid>
+    public class UpdateScheduleInterviewCommand : response.ScheduleInterview, IRequest<Guid>
     {
         public Guid Id { get; set; }
         //public string? ScheduleInterviewName { get; set; }

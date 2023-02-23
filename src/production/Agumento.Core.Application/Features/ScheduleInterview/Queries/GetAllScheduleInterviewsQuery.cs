@@ -1,4 +1,4 @@
-﻿using Agumento.Core.Application.DTO;
+﻿using response = Agumento.Core.Application.ResponseObject;
 using Agumento.Core.Application.Interfaces;
 using Agumento.Core.Domain;
 using AutoMapper;
@@ -7,9 +7,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Agumento.Core.Application.Features.ScheduleInterviewFeatures.Queries
 {
-    public class GetAllScheduleInterviewsQuery : IRequest<IEnumerable<ScheduleInterviewDto>>
+    public class GetAllScheduleInterviewsQuery : IRequest<IEnumerable<response.ScheduleInterview>>
     {
-        public class GetAllScheduleInterviewsQueryHandler : IRequestHandler<GetAllScheduleInterviewsQuery, IEnumerable<ScheduleInterviewDto>>
+        public class GetAllScheduleInterviewsQueryHandler : IRequestHandler<GetAllScheduleInterviewsQuery, IEnumerable<response.ScheduleInterview>>
         {
             private readonly IApplicationDbContext _context;
             private readonly IMapper _mapper;
@@ -18,15 +18,17 @@ namespace Agumento.Core.Application.Features.ScheduleInterviewFeatures.Queries
                 _context = context;
                 _mapper = mapper;
             }
-            public async Task<IEnumerable<ScheduleInterviewDto>> Handle(GetAllScheduleInterviewsQuery query, CancellationToken cancellationToken)
+            public async Task<IEnumerable<response.ScheduleInterview>> Handle(GetAllScheduleInterviewsQuery query, CancellationToken cancellationToken)
             {
-                var ScheduleInterviewList = await _context.ScheduleInterviews.Select(s=> _mapper.Map<ScheduleInterviewDto>(s)).ToListAsync();
+                var scheduleInterviewList = await _context.ScheduleInterviews.ToListAsync();
+                var scheduleInterviews = _mapper.Map<List<response.ScheduleInterview>>(scheduleInterviewList);
 
-                if (ScheduleInterviewList == null)
+                if (scheduleInterviews == null)
                 {
                     return null;
                 }
-                return ScheduleInterviewList.AsReadOnly();
+
+                return scheduleInterviews.AsReadOnly();
             }
         }
     }

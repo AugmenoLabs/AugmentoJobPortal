@@ -1,7 +1,7 @@
 ﻿
-namespace Agumento.Core.Application.DTO
+namespace Agumento.Core.Application.ResponseObject
 {
-    public class ScheduleInterviewDto
+    public class ScheduleInterview
     {
         public string Title { get; set; }
         public string? InterviewerName { get; set; }
