@@ -11,6 +11,7 @@ namespace Agumento.Core.Application
         {
             services.AddMediatR(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(typeof(ScheduleInterviewMapperProfile));
+            services.AddAutoMapper(typeof(OpenPositionMapperProfile));
         }
     }
 }
