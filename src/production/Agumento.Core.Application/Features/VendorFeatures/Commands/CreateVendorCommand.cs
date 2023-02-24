@@ -28,7 +28,7 @@ namespace Agumento.Core.Application.Features.VendorFeatures.Commands
             {
                 //Project project = _mapper.Map<Project>(request);
                 var vendor = new Vendor();
-                vendor.VendorId = request.VendorId;
+                vendor.VendorId = GetVendorId(request.VendorName);
                 vendor.VendorName = request.VendorName;
                 vendor.SPOCName = request.SPOCName;
                 vendor.SPOCContactNumber = request.SPOCContactNumber;
@@ -38,6 +38,12 @@ namespace Agumento.Core.Application.Features.VendorFeatures.Commands
                 await _context.SaveChanges();
 
                 return vendor.Id;
+            }
+            private string GetVendorId(string VendorName)
+            {
+                var name = VendorName == null ? "VD" : (VendorName.Length > 2 ? VendorName.Substring(0, 2).ToUpperInvariant() : VendorName.ToUpperInvariant());
+                return name + " - " + Convert.ToInt64(DateTime.Now.ToString("yyyyMMddHHmmss"));
+
             }
 
 

@@ -29,7 +29,7 @@ namespace Agumento.Core.Application.Features.AccountFeatures.Commands
                     // Account account = _mapper.Map<Account>(request);
                     Account account = new();
                     // account.AccountId = request.AccountId;
-                    account.AccountId = AccountId();
+                    account.AccountId = AccountId(request.AccountName);
                     account.AccountName = request.AccountName;
                     account.AccountDetails = request.AccountDetails;
                     account.AccountManager = request.AccountManager;
@@ -53,9 +53,10 @@ namespace Agumento.Core.Application.Features.AccountFeatures.Commands
 
             }
 
-            private string AccountId()
+            private string AccountId(string accName)
             {
-                return "ACC-" + Convert.ToInt64(DateTime.Now.ToString("yyyyMMddHHmmss"));
+                var name = accName == null ? "AC" : (accName.Length > 2 ? accName.Substring(0, 2).ToUpperInvariant() : accName.ToUpperInvariant());
+                return name + " - " + Convert.ToInt64(DateTime.Now.ToString("yyyyMMddHHmmss"));
 
             }
 
