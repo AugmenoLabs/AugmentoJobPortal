@@ -22,11 +22,10 @@ namespace Agumento.Core.Application.Features.ScheduleInterviewFeatures.Queries
             }
             public async Task<response.ScheduleInterview> Handle(GetScheduleInterviewByIdQuery query, CancellationToken cancellationToken)
             {
-                //var ScheduleInterview = _context.ScheduleInterviews.Where(a => a.Id == query.Id).Select(s => _mapper.Map<ScheduleInterviewDto>(s)).FirstOrDefault();
+                var ScheduleInterview = _context.ScheduleInterviews.Where(a => a.Id == query.Id).Select(s => _mapper.Map<response.ScheduleInterview>(s)).FirstOrDefault();
 
-                //if (ScheduleInterview == null) return null;
-                //return ScheduleInterview;
-                return null;
+                if (ScheduleInterview == null) return null;
+                return ScheduleInterview;
             }
         }
     }
