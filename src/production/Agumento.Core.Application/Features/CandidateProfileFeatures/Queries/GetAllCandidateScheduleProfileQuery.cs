@@ -17,7 +17,7 @@ namespace Agumento.Core.Application.Features.CandidateProfileFeatures.Queries
             }
             public async Task<IEnumerable<response.CandidateProfileSchedule>> Handle(GetAllCandidateScheduleProfileQuery query, CancellationToken cancellationToken)
             {
-                var liqQuery = from c in _context.CandidateProfiles
+                var linqQuery = from c in _context.CandidateProfiles
                                join v in _context.Vendors on c.VendorId equals v.Id
                                join i in _context.ScheduleInterviews on c.Id equals i.CandidateId
                                join o in _context.OpenPositions on c.OpenPositionId equals o.Id
@@ -49,7 +49,7 @@ namespace Agumento.Core.Application.Features.CandidateProfileFeatures.Queries
                                    CandidateFeedbacks = _context.CandidateInterviews.Where(a => a.CandidateId.Equals(c.Id)).ToList(),
 
                                };
-                var candidateProfileScheduls = await (liqQuery).ToListAsync();
+                var candidateProfileScheduls = await (linqQuery).ToListAsync();
 
                 return candidateProfileScheduls;
             }
