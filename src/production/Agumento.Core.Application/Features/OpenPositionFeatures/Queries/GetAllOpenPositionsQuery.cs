@@ -23,7 +23,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
             public async Task<IEnumerable<response.OpenPosition>> Handle(GetAllOpenPositionsQuery query, CancellationToken cancellationToken)
             {
                 var openPositionList = await _context.OpenPositions.ToListAsync();
-                var openPositions = await GetOpenPositions();//; _mapper.Map<List<response.OpenPosition>>(openPositionList);
+                var openPositions = await GetOpenPositions();
 
                 if (openPositions == null)
                 {
@@ -39,6 +39,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                        join p in _context.Projects on op.ProjectId equals p.Id
                                        select new response.OpenPosition
                                        {
+                                           Id= op.Id,
                                            JobId = op.JobId,
                                            JobTitle = op.JobTitle,
                                            AccountId = op.AccountId,

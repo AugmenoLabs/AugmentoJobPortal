@@ -1,16 +1,17 @@
 ﻿using Agumento.Core.Application.Interfaces;
+using Agumento.Core.Application.ResponseObject;
 using Agumento.Core.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace Agumento.Core.Application.Features.CandidateProfileFeatures.Queries
 {
-    public class GetAllCandidateProfileQuery : IRequest<IEnumerable<CandidateProfile>>
+    public class GetAllCandidateProfileScheduleQuery : IRequest<IEnumerable<CandidateProfile>>
     {
-        public class GetAllCandidateProfileHandler : IRequestHandler<GetAllCandidateProfileQuery, IEnumerable<CandidateProfile>>
+        public class GetAllCandidateProfileScheduleHandler : IRequestHandler<GetAllCandidateProfileQuery, IEnumerable<CandidateProfile>>
         {
             private readonly IApplicationDbContext _context;
-            public GetAllCandidateProfileHandler(IApplicationDbContext context)
+            public GetAllCandidateProfileScheduleHandler(IApplicationDbContext context)
             {
                 _context = context;
             }
