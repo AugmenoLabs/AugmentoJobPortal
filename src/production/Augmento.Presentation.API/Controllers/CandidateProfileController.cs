@@ -28,6 +28,13 @@ namespace Augmento.Presentation.API.Controllers
             return Ok(await Mediator.Send(new GetAllCandidateProfileQuery()));
         }
 
+        [HttpGet]
+        [Route("CandidateProfileSchedule")]
+        public async Task<IActionResult> GetAllSchedule()
+        {
+            return Ok(await Mediator.Send(new GetAllCandidateScheduleProfileQuery()));
+        }
+
         /// <summary>
         /// Gets Candidateprofile Entity by Id.
         /// </summary>
