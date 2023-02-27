@@ -1,7 +1,7 @@
 ﻿
 namespace Agumento.Core.Application.ResponseObject
 {
-    public class OpenPosition
+    public class OpenPosition1
     {
         public Guid Id { get; set; }
         public string JobId { get; set; }
