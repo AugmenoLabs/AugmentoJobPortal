@@ -20,7 +20,7 @@ namespace Agumento.Core.Application.Features.CandidateProfileFeatures.Queries
                 var candidateProfileScheduls = await (from c in _context.CandidateProfiles
                                                       join v in _context.Vendors on c.VendorId equals v.Id
                                                       join i in _context.ScheduleInterviews on c.Id equals i.CandidateId
-                                                      join f in _context.CandidateInterviews on c.Id equals f.CandidateId
+                                                      // join f in _context.CandidateInterviews on c.Id equals f.CandidateId
                                                       select new response.CandidateProfileSchedule
                                                       {
                                                           CandidateName = c.CandidateName,
@@ -43,9 +43,11 @@ namespace Agumento.Core.Application.Features.CandidateProfileFeatures.Queries
                                                           HasOfferLetter = c.HasOfferLetter,
                                                           Resume = c.Resume,
                                                           FileName = c.FileName,
-                                                          FileExt = c.FileExt
-                                                          //CandidateFeedbacks = c.
+                                                          FileExt = c.FileExt,
+                                                          CandidateFeedbacks = c.CandidateInterviews
+
                                                       }).ToListAsync();
+                //var aa = _context.CandidateProfiles.Select(p => new { p.Id, p.CandidateInterviews }).ToList();
 
                 return candidateProfileScheduls;
             }

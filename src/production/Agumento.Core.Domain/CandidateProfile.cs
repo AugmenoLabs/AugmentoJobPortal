@@ -6,6 +6,10 @@ namespace Agumento.Core.Domain
 {
     public class CandidateProfile : BaseEntity
     {
+        public CandidateProfile()
+        {
+            this.CandidateInterviews = new HashSet<CandidateInterview>();
+        }
         [Required]
         public string CandidateName { get; set; }
 
@@ -19,7 +23,7 @@ namespace Agumento.Core.Domain
 
         public string? PermanenetAddress { get; set; }
 
-        
+
         public string Gender { get; set; }
 
         public string? MaritalStatus { get; set; }
@@ -50,9 +54,11 @@ namespace Agumento.Core.Domain
 
         public bool HasOfferLetter { get; set; }
 
-        public byte[] Resume { get; set; } 
-        public string FileName { get; set; } 
-        public string FileExt { get; set; } 
+        public byte[] Resume { get; set; }
+        public string FileName { get; set; }
+        public string FileExt { get; set; }
+
+        public virtual ICollection<CandidateInterview> CandidateInterviews { get; set; }
 
     }
 }
