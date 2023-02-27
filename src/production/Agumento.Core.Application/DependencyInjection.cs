@@ -13,6 +13,7 @@ namespace Agumento.Core.Application
             services.AddAutoMapper(typeof(ScheduleInterviewMapperProfile));
             services.AddAutoMapper(typeof(OpenPositionMapperProfile));
             services.AddAutoMapper(typeof(OpenPositionReportMapperProfile));
+            services.AddAutoMapper(typeof(CandidateProfileScheduleMapperProfile));
         }
     }
 }
