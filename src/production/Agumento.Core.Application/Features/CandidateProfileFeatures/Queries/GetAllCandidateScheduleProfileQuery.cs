@@ -20,11 +20,14 @@ namespace Agumento.Core.Application.Features.CandidateProfileFeatures.Queries
                 var liqQuery = from c in _context.CandidateProfiles
                                join v in _context.Vendors on c.VendorId equals v.Id
                                join i in _context.ScheduleInterviews on c.Id equals i.CandidateId
+                               join o in _context.OpenPositions on c.OpenPositionId equals o.Id
                                select new response.CandidateProfileSchedule
                                {
                                    CandidateName = c.CandidateName,
                                    Email = c.Email,
                                    ContactNumber = c.ContactNumber,
+                                   AccountName = _context.Accounts.Where(ac => ac.Id.Equals(o.AccountId)).Select(a => a.AccountName).FirstOrDefault(),
+                                   ProjectName = _context.Projects.Where(p => p.Id.Equals(o.ProjectId)).Select(a => a.ProjectName).FirstOrDefault(),
                                    ResidentialAddress = c.ResidentialAddress,
                                    PermanenetAddress = c.PermanenetAddress,
                                    Gender = c.Gender,

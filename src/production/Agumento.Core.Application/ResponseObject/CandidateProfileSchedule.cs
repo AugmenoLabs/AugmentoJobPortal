@@ -9,6 +9,8 @@ namespace Agumento.Core.Application.ResponseObject
         public string Email { get; set; }
 
         public long ContactNumber { get; set; }
+        public string? AccountName { get; set; }
+        public string? ProjectName { get; set; }
 
         public string? ResidentialAddress { get; set; }
 
