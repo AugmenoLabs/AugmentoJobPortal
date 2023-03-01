@@ -36,7 +36,7 @@ namespace Augmento.Presentation.API.Controllers
         [Route("OpenPositionsReport")]
         public async Task<IActionResult> GetAllOpenPositionsReport()
         {
-            return Ok(await Mediator.Send(new GetAllOpenPositionsQuery()));
+            return Ok(await Mediator.Send(new GetAllOpenPositionsReportQuery()));
         }
 
         /// <summary>
