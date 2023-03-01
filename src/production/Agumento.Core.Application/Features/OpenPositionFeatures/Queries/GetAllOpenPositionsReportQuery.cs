@@ -20,14 +20,6 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
             public async Task<IEnumerable<response.OpenPositionReport>> Handle(GetAllOpenPositionsReportQuery query, CancellationToken cancellationToken)
             {
                 var openPositionsReport = await _context.OpenPositions.ToListAsync();
-                //
-                // _context.OpenPositions.Select(o => new { o.JobId, o.JobTitle,o.NoOfPositions,o.SkillSet,o.Budget,o.Location,o.YearOfExp,o.Qualification,o.});
-                //var report= from o in _context.OpenPositions join c in _context.CandidateProfiles on o.Id equals c.Id select(new { o.JobId, o.JobTitle,o.A})
-                //if (openPositionsReport == null)
-                //{
-                //    return null;
-                //}
-                //return openPositionsReport.AsReadOnly();
                 var openPositionReports = await GetOpenPositionsReport();
                 return openPositionReports;
             }
@@ -39,6 +31,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                       join c in _context.CandidateProfiles on op.Id equals c.OpenPositionId
                                       select new response.OpenPositionReport
                                       {
+                                          Id= op.Id,
                                           JobId = op.JobId,
                                           JobTitle = op.JobTitle,
                                           AccountId = op.AccountId,
