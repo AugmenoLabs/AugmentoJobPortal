@@ -4,6 +4,7 @@ namespace Agumento.Core.Application.ResponseObject
 {
     public class CandidateProfileSchedule
     {
+        public Guid Id { get; set; }
         public string CandidateName { get; set; }
 
         public string Email { get; set; }

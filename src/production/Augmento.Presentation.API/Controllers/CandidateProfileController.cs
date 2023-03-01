@@ -33,7 +33,7 @@ namespace Augmento.Presentation.API.Controllers
         [Route("CandidateProfileSchedule")]
         public async Task<IActionResult> GetAllSchedule()
         {
-            return Ok(await Mediator.Send(new GetAllOpenPositionsReportQuery()));
+            return Ok(await Mediator.Send(new GetAllCandidateScheduleProfileQuery()));
         }
 
         /// <summary>
