@@ -3,6 +3,7 @@ namespace Agumento.Core.Application.ResponseObject
 {
     public class ScheduleInterview
     {
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public string? InterviewerName { get; set; }
         public string? InterviewerEmail { get; set; }

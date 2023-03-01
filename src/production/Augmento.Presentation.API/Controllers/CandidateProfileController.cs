@@ -1,5 +1,6 @@
 ﻿using Agumento.Core.Application.Features.CandidateProfileFeatures.Commands;
 using Agumento.Core.Application.Features.CandidateProfileFeatures.Queries;
+using Agumento.Core.Application.Features.OpenPositionFeatures.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -32,7 +33,7 @@ namespace Augmento.Presentation.API.Controllers
         [Route("CandidateProfileSchedule")]
         public async Task<IActionResult> GetAllSchedule()
         {
-            return Ok(await Mediator.Send(new GetAllCandidateScheduleProfileQuery()));
+            return Ok(await Mediator.Send(new GetAllOpenPositionsReportQuery()));
         }
 
         /// <summary>
