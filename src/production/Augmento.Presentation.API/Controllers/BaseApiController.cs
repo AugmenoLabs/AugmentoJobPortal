@@ -1,12 +1,14 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Augmento.Presentation.API.Controllers
 {
-   
+    [Authorize]
     [ApiController]
     [Route("api/v1/[controller]")]
+    
     public abstract class BaseApiController : ControllerBase
     {
         private IMediator? _mediator;

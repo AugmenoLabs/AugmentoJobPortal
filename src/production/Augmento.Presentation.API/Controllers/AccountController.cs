@@ -1,5 +1,6 @@
 ﻿using Agumento.Core.Application.Features.AccountFeatures.Commands;
 using Agumento.Core.Application.Features.AccountFeatures.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,7 @@ namespace Augmento.Presentation.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllAccountsQuery()));
