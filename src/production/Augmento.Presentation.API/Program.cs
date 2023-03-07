@@ -66,7 +66,7 @@ o.Events = new JwtBearerEvents()
 builder.Services.AddAuthorization(o =>
 {
     o.AddPolicy("HR", policy => policy.RequireClaim("HR", "[HR]"));
-    //o.AddPolicy("interviewr", policy => policy.RequireRole("[interviewr]"));
+    o.AddPolicy("interviewr", policy => policy.RequireRole("[interviewr]"));
 });
 
 builder.Services.AddApplication();

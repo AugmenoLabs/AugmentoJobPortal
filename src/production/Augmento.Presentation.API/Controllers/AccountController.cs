@@ -24,7 +24,7 @@ namespace Augmento.Presentation.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Authorize]
+        
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllAccountsQuery()));

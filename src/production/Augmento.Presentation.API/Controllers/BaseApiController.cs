@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Augmento.Presentation.API.Controllers
 {
-    [Authorize]
+    
     [ApiController]
     [Route("api/v1/[controller]")]
-    
+    [Authorize(Roles = "interviewr")]
     public abstract class BaseApiController : ControllerBase
     {
         private IMediator? _mediator;
