@@ -1,5 +1,7 @@
-﻿using Agumento.Core.Application.Features.OpenPositionFeatures.Commands;
+﻿using System.Data;
+using Agumento.Core.Application.Features.OpenPositionFeatures.Commands;
 using Agumento.Core.Application.Features.OpenPositionFeatures.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +15,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize(Roles = "HR")]
         public async Task<IActionResult> Create(CreateOpenPositionCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -23,6 +26,7 @@ namespace Augmento.Presentation.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(Roles = "HR")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllOpenPositionsQuery()));
@@ -34,6 +38,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("OpenPositionsReport")]
+        [Authorize(Roles = "HR")]
         public async Task<IActionResult> GetAllOpenPositionsReport()
         {
             return Ok(await Mediator.Send(new GetAllOpenPositionsReportQuery()));
@@ -45,6 +50,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "HR")]
         public async Task<IActionResult> GetById(Guid id)
         {
             return Ok(await Mediator.Send(new GetAllOpenPositionsByIdQuery { Id = id }));
@@ -56,6 +62,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "HR")]
         public async Task<IActionResult> Delete(Guid id)
         {
             return Ok(await Mediator.Send(new DeleteOpenPositionByIdCommand { Id = id }));
@@ -68,6 +75,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("[action]")]
+        [Authorize(Roles = "HR")]
         public async Task<IActionResult> Update(Guid id, UpdateOpenPositionCommand command)
         {
             if (id != command.Id)

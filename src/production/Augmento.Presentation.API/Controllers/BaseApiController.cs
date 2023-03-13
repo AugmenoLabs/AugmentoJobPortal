@@ -8,7 +8,7 @@ namespace Augmento.Presentation.API.Controllers
     
     [ApiController]
     [Route("api/v1/[controller]")]
-    [Authorize(Roles = "interviewr")]
+    [Authorize]
     public abstract class BaseApiController : ControllerBase
     {
         private IMediator? _mediator;

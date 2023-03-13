@@ -1,5 +1,7 @@
-﻿using Agumento.Core.Application.Features.CandidateInterviewFeatures.Commands;
+﻿using System.Data;
+using Agumento.Core.Application.Features.CandidateInterviewFeatures.Commands;
 using Agumento.Core.Application.Features.CandidateInterviewFeatures.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +15,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize(Roles = "interviewr")]
         public async Task<IActionResult> Create(CreateCandidateInterviewCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -23,6 +26,7 @@ namespace Augmento.Presentation.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(Roles = "interviewr")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllCandidateInterviewsQuery()));
@@ -34,6 +38,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "interviewr")]
         public async Task<IActionResult> GetById(Guid id)
         {
             return Ok(await Mediator.Send(new GetCandidateInterviewByIdQuery { Id = id }));
@@ -45,6 +50,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "interviewr")]
         public async Task<IActionResult> Delete(Guid id)
         {
             return Ok(await Mediator.Send(new DeleteCandidateInterviewByIdCommand { Id = id }));
@@ -57,6 +63,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("[action]")]
+        [Authorize(Roles = "interviewr")]
         public async Task<IActionResult> Update(Guid id, UpdateCandidateInterviewCommand command)
         {
             if (id != command.Id)

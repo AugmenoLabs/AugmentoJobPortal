@@ -1,5 +1,7 @@
-﻿using Agumento.Core.Application.Features.ScheduleInterviewFeatures.Commands;
+﻿using System.Data;
+using Agumento.Core.Application.Features.ScheduleInterviewFeatures.Commands;
 using Agumento.Core.Application.Features.ScheduleInterviewFeatures.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +17,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize(Roles = "Proj_Manager")]
         public async Task<IActionResult> Create(CreateScheduleInterviewCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -26,6 +29,7 @@ namespace Augmento.Presentation.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(Roles = "Proj_Manager")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllScheduleInterviewsQuery()));
@@ -37,6 +41,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Proj_Manager")]
         public async Task<IActionResult> GetById(Guid id)
         {
             return Ok(await Mediator.Send(new GetScheduleInterviewByIdQuery { Id = id }));
@@ -48,6 +53,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Proj_Manager")]
         public async Task<IActionResult> Delete(Guid id)
         {
             return Ok(await Mediator.Send(new DeleteScheduleInterviewByIdCommand { Id = id }));
@@ -60,6 +66,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("[action]")]
+        [Authorize(Roles = "Proj_Manager")]
         public async Task<IActionResult> Update(Guid id, UpdateScheduleInterviewCommand command)
         {
             if (id != command.Id)

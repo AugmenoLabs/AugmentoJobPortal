@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Augmento.Presentation.API.Controllers
 {
+    [Authorize(Roles = "Acc_Manager")]
     public class AccountController : BaseApiController
     {
         /// <summary>
@@ -24,7 +25,7 @@ namespace Augmento.Presentation.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        
+        [Authorize(Roles = "Acc_Manager")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllAccountsQuery()));
@@ -36,6 +37,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Acc_Manager")]
         public async Task<IActionResult> GetById(Guid id)
         {
             return Ok(await Mediator.Send(new GetAccountByIdQuery { Id = id }));
@@ -47,6 +49,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Acc_Manager")]
         public async Task<IActionResult> Delete(Guid id)
         {
             return Ok(await Mediator.Send(new DeleteAccountByIdCommand { Id = id }));
@@ -59,6 +62,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("[action]")]
+        [Authorize(Roles = "Acc_Manager")]
         public async Task<IActionResult> Update(Guid id, UpdateAccountCommand command)
         {
             if (id != command.Id)

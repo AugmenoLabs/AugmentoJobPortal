@@ -1,5 +1,7 @@
-﻿using Agumento.Core.Application.Features.ProjectFeatures.Commands;
+﻿using System.Data;
+using Agumento.Core.Application.Features.ProjectFeatures.Commands;
 using Agumento.Core.Application.Features.ProjectFeatures.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +17,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize(Roles = "Proj_Manager")]
         public async Task<IActionResult> Create(CreateProjectCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -26,6 +29,7 @@ namespace Augmento.Presentation.API.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
+        [Authorize(Roles = "Proj_Manager")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await Mediator.Send(new GetAllProjectsQuery()));
@@ -37,6 +41,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
+        [Authorize(Roles = "Proj_Manager")]
         public async Task<IActionResult> GetById(Guid id)
         {
             return Ok(await Mediator.Send(new GetProjectByIdQuery { Id = id }));
@@ -48,6 +53,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Proj_Manager")]
         public async Task<IActionResult> Delete(Guid id)
         {
             return Ok(await Mediator.Send(new DeleteProjectByIdCommand { Id = id }));
@@ -60,6 +66,7 @@ namespace Augmento.Presentation.API.Controllers
         /// <param name="command"></param>
         /// <returns></returns>
         [HttpPut("[action]")]
+        [Authorize(Roles = "Proj_Manager")]
         public async Task<IActionResult> Update(Guid id, UpdateProjectCommand command)
         {
             if (id != command.Id)
