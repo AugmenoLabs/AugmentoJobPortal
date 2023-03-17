@@ -31,6 +31,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                       join c in _context.CandidateProfiles
                                         on op.Id equals c.OpenPositionId into candidates
                                       from candidate in candidates.DefaultIfEmpty()
+                                      orderby op.CreatedOn descending
                                       select new response.OpenPositionReport
                                       {
                                           Id = op.Id,
@@ -47,6 +48,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                           JobDescription = op.JobDescription,
                                           NoOfPositions = op.NoOfPositions,
                                           Location = op.Location,
+                                          PostedOn = op.CreatedOn,
                                           L1s = candidate.CandidateInterviews
                                             .Count(i => i.Level.Equals("L1")),
                                           L2s = candidate.CandidateInterviews

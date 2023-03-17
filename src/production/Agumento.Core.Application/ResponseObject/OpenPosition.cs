@@ -12,6 +12,7 @@ namespace Agumento.Core.Application.ResponseObject
 
         public Guid ProjectId { get; set; }
         public string ProjectName { get; set; }
+        public DateTime PostedOn { get; set; }
 
         public string Budget { get; set; }
 

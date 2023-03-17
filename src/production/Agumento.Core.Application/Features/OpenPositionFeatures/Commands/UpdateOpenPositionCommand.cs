@@ -14,11 +14,11 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Commands
         // public virtual Account Account { get; set; }
         public virtual Guid ProjectId { get; set; }
         // public virtual Project Project { get; set; }
-        public virtual Guid CandidateProfileId { get; set; }
+
 
         public string SkillSet { get; set; }
 
-        public string YearOfExp { get; set; }
+        public Decimal YearOfExp { get; set; }
 
         public string? Qualification { get; set; }
 
@@ -49,7 +49,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Commands
                 }
                 else
                 {
-           
+
                     openPosition.JobId = command.JobId;
                     openPosition.JobTitle = command.JobTitle;
                     openPosition.AccountId = command.AccountId;
@@ -60,7 +60,8 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Commands
                     openPosition.NoOfPositions = command.NoOfPositions;
                     openPosition.SkillSet = command.SkillSet;
                     openPosition.JobDescription = command.JobDescription;
-
+                    openPosition.YearOfExp = command.YearOfExp;
+                    openPosition.UpdatedOn = DateTime.UtcNow;
                     _context.OpenPositions.Update(openPosition);
                     await _context.SaveChanges();
 
