@@ -48,7 +48,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                           JobDescription = op.JobDescription,
                                           NoOfPositions = op.NoOfPositions,
                                           Location = op.Location,
-                                          PostedOn = op.CreatedOn,
+                                          PostedOn = op.CreatedOn.ToLocalTime(),
                                           L1s = candidate.CandidateInterviews
                                             .Count(i => i.Level.Equals("L1")),
                                           L2s = candidate.CandidateInterviews

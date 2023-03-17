@@ -39,7 +39,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                        join p in _context.Projects on op.ProjectId equals p.Id
                                        select new response.OpenPosition
                                        {
-                                           Id= op.Id,
+                                           Id = op.Id,
                                            JobId = op.JobId,
                                            JobTitle = op.JobTitle,
                                            AccountId = op.AccountId,
@@ -47,9 +47,10 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                            ProjectId = op.ProjectId,
                                            ProjectName = p.ProjectName,
                                            Budget = op.Budget,
-                                           SkillSet= op.SkillSet,
+                                           SkillSet = op.SkillSet,
                                            YearOfExp = op.YearOfExp,
                                            Qualification = op.Qualification,
+                                           PostedOn = op.CreatedOn.ToLocalTime(),
                                            JobDescription = op.JobDescription,
                                            NoOfPositions = op.NoOfPositions,
                                            Location = op.Location
