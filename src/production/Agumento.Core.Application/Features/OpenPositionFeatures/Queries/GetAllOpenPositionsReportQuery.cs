@@ -19,7 +19,6 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
             }
             public async Task<IEnumerable<response.OpenPositionReport>> Handle(GetAllOpenPositionsReportQuery query, CancellationToken cancellationToken)
             {
-                var openPositionsReport = await _context.OpenPositions.ToListAsync();
                 var openPositionReports = await GetOpenPositionsReport();
                 return openPositionReports;
             }
