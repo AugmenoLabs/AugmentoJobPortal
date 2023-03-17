@@ -19,9 +19,9 @@ namespace Agumento.Core.Domain
         [ForeignKey("Id")]
         public virtual Guid ProjectId { get; set; }
 
-        [Display(Name = "CandidateProfile")]
-        [ForeignKey("Id")]
-        public virtual Guid CandidateProfileId { get; set; }
+        //[Display(Name = "CandidateProfile")]
+        //[ForeignKey("Id")]
+        //public virtual Guid? CandidateProfileId { get; set; }
 
         public string Budget { get; set; }
 
