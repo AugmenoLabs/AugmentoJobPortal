@@ -25,13 +25,16 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
             }
             private async Task<IEnumerable<response.OpenPositionReport>> GetOpenPositionsReport()
             {
+
                 var position = await (from op in _context.OpenPositions
                                       join acc in _context.Accounts on op.AccountId equals acc.Id
                                       join p in _context.Projects on op.ProjectId equals p.Id
-                                      join c in _context.CandidateProfiles on op.Id equals c.OpenPositionId
+                                      join c in _context.CandidateProfiles
+                                        on op.Id equals c.OpenPositionId into candidates
+                                      from candidate in candidates.DefaultIfEmpty()
                                       select new response.OpenPositionReport
                                       {
-                                          Id= op.Id,
+                                          Id = op.Id,
                                           JobId = op.JobId,
                                           JobTitle = op.JobTitle,
                                           AccountId = op.AccountId,
@@ -39,21 +42,26 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                           ProjectId = op.ProjectId,
                                           ProjectName = p.ProjectName,
                                           Budget = op.Budget,
+                                          SkillSet = op.SkillSet,
                                           YearOfExp = op.YearOfExp,
                                           Qualification = op.Qualification,
                                           JobDescription = op.JobDescription,
                                           NoOfPositions = op.NoOfPositions,
                                           Location = op.Location,
-                                          //TotalApplied= 
-                                          //Screenings
-                                          L1s = c.CandidateInterviews.Where(i => i.Level.Equals("L1")).Count(),
-                                          L2s = c.CandidateInterviews.Where(i => i.Level.Equals("L2")).Count(),
-                                          Managerials = c.CandidateInterviews.Where(i => i.Level.Equals("Managerial")).Count(),
-                                          HR = c.CandidateInterviews.Where(i => i.Level.Equals("HR")).Count(),
-                                          Offers = c.CandidateInterviews.Where(i => i.Level.Equals("Offers")).Count(),
-                                          Onboarded = c.CandidateInterviews.Where(i => i.Level.Equals("Onboarded")).Count(),
-
+                                          L1s = candidate.CandidateInterviews
+                                            .Count(i => i.Level.Equals("L1")),
+                                          L2s = candidate.CandidateInterviews
+                                            .Count(i => i.Level.Equals("L2")),
+                                          Managerials = candidate.CandidateInterviews
+                                            .Count(i => i.Level.Equals("Managerial")),
+                                          HR = candidate.CandidateInterviews
+                                            .Count(i => i.Level.Equals("HR")),
+                                          Offers = candidate.CandidateInterviews
+                                            .Count(i => i.Level.Equals("Offers")),
+                                          Onboarded = candidate.CandidateInterviews
+                                            .Count(i => i.Level.Equals("Onboarded"))
                                       }).ToListAsync();
+
                 return position;
 
             }

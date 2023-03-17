@@ -13,6 +13,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Commands
         public virtual Guid AccountId { get; set; }
         // public virtual Account Account { get; set; }
         public virtual Guid ProjectId { get; set; }
+        public virtual Guid CandidateProfileId { get; set; }
         // public virtual Project Project { get; set; }
 
         public string SkillSet { get; set; }
