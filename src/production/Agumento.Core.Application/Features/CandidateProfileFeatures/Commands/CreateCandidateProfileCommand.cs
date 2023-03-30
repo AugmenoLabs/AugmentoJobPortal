@@ -42,39 +42,37 @@ namespace Agumento.Core.Application.Features.CandidateProfileFeatures.Commands
             }
             public async Task<Guid> Handle(CreateCandidateProfileCommand request, CancellationToken cancellationToken)
             {
-                //CandidateProfile candidateProfile = _mapper.Map<CandidateProfile>(request);
-                var candidateProfile = new CandidateProfile();
+                    //CandidateProfile candidateProfile = _mapper.Map<CandidateProfile>(request);
+                    var candidateProfile = new CandidateProfile();
 
-                candidateProfile.CandidateName = request.CandidateName;
-                candidateProfile.Email = request.Email;
-                candidateProfile.ContactNumber = request.ContactNumber;
-                candidateProfile.ResidentialAddress = request.ResidentialAddress;
-                candidateProfile.PermanenetAddress = request.PermanenetAddress;
-                candidateProfile.Gender = request.Gender;
-                candidateProfile.MaritalStatus = request.MaritalStatus;
-                candidateProfile.YearOfExperience = request.YearOfExperience;
-                candidateProfile.PrimarySkills = request.PrimarySkills;
-                candidateProfile.SecondarySkills = request.SecondarySkills;
-                candidateProfile.Qualification = request.Qualification;
-                candidateProfile.OpenPositionId = request.OpenPositionId;
-                candidateProfile.VendorId = request.VendorId;
-                candidateProfile.CurrentCTC = request.CurrentCTC;
-                candidateProfile.ExpectedCTC = request.ExpectedCTC;
-                candidateProfile.NoticePeriod = request.NoticePeriod;
-                candidateProfile.HasOfferLetter = request.HasOfferLetter;
-                candidateProfile.FileName = request.FileName;
-                candidateProfile.FileExt = request.FileExt;
-                
-                candidateProfile.Resume = request.Resume;
+                    candidateProfile.CandidateName = request.CandidateName;
+                    candidateProfile.Email = request.Email;
+                    candidateProfile.ContactNumber = request.ContactNumber;
+                    candidateProfile.ResidentialAddress = request.ResidentialAddress;
+                    candidateProfile.PermanenetAddress = request.PermanenetAddress;
+                    candidateProfile.Gender = request.Gender;
+                    candidateProfile.MaritalStatus = request.MaritalStatus;
+                    candidateProfile.YearOfExperience = request.YearOfExperience;
+                    candidateProfile.PrimarySkills = request.PrimarySkills;
+                    candidateProfile.SecondarySkills = request.SecondarySkills;
+                    candidateProfile.Qualification = request.Qualification;
+                    candidateProfile.OpenPositionId = request.OpenPositionId;
+                    candidateProfile.VendorId = request.VendorId;
+                    candidateProfile.CurrentCTC = request.CurrentCTC;
+                    candidateProfile.ExpectedCTC = request.ExpectedCTC;
+                    candidateProfile.NoticePeriod = request.NoticePeriod;
+                    candidateProfile.HasOfferLetter = request.HasOfferLetter;
+                    candidateProfile.FileName = request.FileName;
+                    candidateProfile.FileExt = request.FileExt;
 
-
-                _context.CandidateProfiles.Add(candidateProfile);
-                await _context.SaveChanges();
-
-                return candidateProfile.Id;
-            }
+                    candidateProfile.Resume = request.Resume;
 
 
+                    _context.CandidateProfiles.Add(candidateProfile);
+                    await _context.SaveChanges();
+
+                    return candidateProfile.Id;
+                }
         }
     }
 }

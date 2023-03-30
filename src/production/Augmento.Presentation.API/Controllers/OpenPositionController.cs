@@ -2,6 +2,7 @@
 using Agumento.Core.Application.Features.OpenPositionFeatures.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Augmento.Presentation.API.Controllers
 {
@@ -75,6 +76,17 @@ namespace Augmento.Presentation.API.Controllers
                 return BadRequest();
             }
             return Ok(await Mediator.Send(command));
+        }
+
+        /// <summary>
+        /// Returns open position details for screening
+        /// </summary>
+        /// <param name="positionId"></param>
+        /// <returns></returns>
+        [HttpGet("OpenPositionScreeningReport/{positionId}")]
+        public async Task<IActionResult> GetAllOpenPositionScreeningReport(Guid positionId)
+        {
+            return Ok(await Mediator.Send(new GetOpenPositionScreeningQuery { Id = positionId }));
         }
     }
 }
