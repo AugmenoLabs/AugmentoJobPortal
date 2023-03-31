@@ -17,7 +17,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Commands
 
         public string SkillSet { get; set; }
 
-        public string YearOfExp { get; set; }
+        public Decimal YearOfExp { get; set; }
 
         public string? Qualification { get; set; }
 
@@ -55,7 +55,8 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Commands
                 openPosition.NoOfPositions = request.NoOfPositions;
                 openPosition.SkillSet = request.SkillSet;
                 openPosition.JobDescription = request.JobDescription;
-
+                openPosition.YearOfExp = request.YearOfExp;
+                openPosition.CreatedOn = DateTime.UtcNow;
                 _context.OpenPositions.Add(openPosition);
 
                 await _context.SaveChanges();

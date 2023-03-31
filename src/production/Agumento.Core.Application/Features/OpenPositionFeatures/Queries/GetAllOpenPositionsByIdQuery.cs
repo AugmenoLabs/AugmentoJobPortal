@@ -39,6 +39,8 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                           ProjectId = op.ProjectId,
                                           ProjectName = p.ProjectName,
                                           Budget = op.Budget,
+                                          SkillSet = op.SkillSet,
+                                          PostedOn = op.CreatedOn.ToLocalTime(),
                                           YearOfExp = op.YearOfExp,
                                           Qualification = op.Qualification,
                                           JobDescription = op.JobDescription,

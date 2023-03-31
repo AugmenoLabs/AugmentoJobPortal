@@ -36,6 +36,13 @@ namespace Augmento.Presentation.API.Controllers
             return Ok(await Mediator.Send(new GetAllCandidateScheduleProfileQuery()));
         }
 
+        [HttpGet]
+        [Route("CandidateProfileByOpenPositionId")]
+        public async Task<IActionResult> GetAllCandidateByOpenPositionId(Guid openPositionId)
+        {
+            return Ok(await Mediator.Send(new GetAllCandidateProfileByJobIdQuery { OpenPositionId = openPositionId }));
+        }
+
         /// <summary>
         /// Gets Candidateprofile Entity by Id.
         /// </summary>
