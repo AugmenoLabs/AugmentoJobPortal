@@ -1,8 +1,6 @@
 ﻿using Agumento.Core.Application.Features.OpenPositionFeatures.Commands;
 using Agumento.Core.Application.Features.OpenPositionFeatures.Queries;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace Augmento.Presentation.API.Controllers
 {
@@ -35,9 +33,9 @@ namespace Augmento.Presentation.API.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("OpenPositionsReport")]
-        public async Task<IActionResult> GetAllOpenPositionsReport()
+        public async Task<IActionResult> GetAllOpenPositionsReport(int PageNumber, int PageSize) 
         {
-            return Ok(await Mediator.Send(new GetAllOpenPositionsReportQuery()));
+            return Ok(await Mediator.Send(new GetAllOpenPositionsReportQuery { PageNumber = PageNumber, PageSize = PageSize }));
         }
 
         /// <summary>

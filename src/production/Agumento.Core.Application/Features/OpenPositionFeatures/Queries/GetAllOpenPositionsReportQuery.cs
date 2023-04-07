@@ -1,15 +1,14 @@
 ﻿using Agumento.Core.Application.Interfaces;
 using response = Agumento.Core.Application.ResponseObject;
-using Agumento.Core.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
-using System.Collections.Generic;
 
 namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
 {
     public class GetAllOpenPositionsReportQuery : IRequest<IEnumerable<response.OpenPositionReport>>
     {
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; }
         public class GetAllOpenPositionsReportQueryHandler : IRequestHandler<GetAllOpenPositionsReportQuery, IEnumerable<response.OpenPositionReport>>
         {
             private readonly IApplicationDbContext _context;
@@ -19,54 +18,39 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
             }
             public async Task<IEnumerable<response.OpenPositionReport>> Handle(GetAllOpenPositionsReportQuery query, CancellationToken cancellationToken)
             {
-                var openPositionReports = await GetOpenPositionsReport();
+                var openPositionReports = await GetOpenPositionsReport(query);
                 return openPositionReports;
             }
-            private async Task<IEnumerable<response.OpenPositionReport>> GetOpenPositionsReport()
+            private async Task<IEnumerable<response.OpenPositionReport>> GetOpenPositionsReport(GetAllOpenPositionsReportQuery query)
             {
-
-                var position = await (from op in _context.OpenPositions
-                                      join acc in _context.Accounts on op.AccountId equals acc.Id
-                                      join p in _context.Projects on op.ProjectId equals p.Id
-                                      join c in _context.CandidateProfiles
-                                        on op.Id equals c.OpenPositionId into candidates
-                                      from candidate in candidates.DefaultIfEmpty()
-                                      orderby op.CreatedOn descending
-                                      select new response.OpenPositionReport
-                                      {
-                                          Id = op.Id,
-                                          JobId = op.JobId,
-                                          JobTitle = op.JobTitle,
-                                          AccountId = op.AccountId,
-                                          AccountName = acc.AccountName,
-                                          ProjectId = op.ProjectId,
-                                          ProjectName = p.ProjectName,
-                                          Budget = op.Budget,
-                                          SkillSet = op.SkillSet,
-                                          YearOfExp = op.YearOfExp,
-                                          Qualification = op.Qualification,
-                                          JobDescription = op.JobDescription,
-                                          NoOfPositions = op.NoOfPositions,
-                                          Location = op.Location,
-                                          PostedOn = op.CreatedOn.ToLocalTime(),
-                                          L1s = candidate.CandidateInterviews
-                                            .Count(i => i.Level.Equals("L1")),
-                                          L2s = candidate.CandidateInterviews
-                                            .Count(i => i.Level.Equals("L2")),
-                                          Managerials = candidate.CandidateInterviews
-                                            .Count(i => i.Level.Equals("Managerial")),
-                                          HR = candidate.CandidateInterviews
-                                            .Count(i => i.Level.Equals("HR")),
-                                          Offers = candidate.CandidateInterviews
-                                            .Count(i => i.Level.Equals("Offers")),
-                                          Onboarded = candidate.CandidateInterviews
-                                            .Count(i => i.Level.Equals("Onboarded"))
-                                      }).ToListAsync();
-
-                return position;
-
+                var result = await (from op in _context.OpenPositions
+                                    join acc in _context.Accounts on op.AccountId equals acc.Id
+                                    join pr in _context.Projects on op.ProjectId equals pr.Id
+                                    join cp in _context.CandidateProfiles on op.Id equals cp.OpenPositionId into cpGroup
+                                    from cp in cpGroup.DefaultIfEmpty()
+                                    group op by new { op.Id, acc.AccountName, pr.ProjectName } into grouped
+                                    orderby grouped.First().CreatedOn descending
+                                    select new response.OpenPositionReport
+                                    {
+                                        Id = grouped.Key.Id,
+                                        JobId = grouped.First().JobId,
+                                        JobTitle = grouped.First().JobTitle,
+                                        AccountId = grouped.First().AccountId,
+                                        AccountName = grouped.Key.AccountName,
+                                        ProjectId = grouped.First().ProjectId,
+                                        ProjectName = grouped.Key.ProjectName,
+                                        Budget = grouped.First().Budget,
+                                        SkillSet = grouped.First().SkillSet,
+                                        YearOfExp = grouped.First().YearOfExp,
+                                        Qualification = grouped.First().Qualification,
+                                        JobDescription = grouped.First().JobDescription,
+                                        NoOfPositions = grouped.First().NoOfPositions,
+                                        Location = grouped.First().Location,
+                                        TotalApplied = grouped.Select(x => x.CandidateProfiles.Count).FirstOrDefault(),
+                                        PostedOn = grouped.First().CreatedOn
+                                    }).Skip((query.PageNumber - 1) * query.PageSize).Take(query.PageSize).ToListAsync();
+                return result;
             }
-
         }
     }
 }
