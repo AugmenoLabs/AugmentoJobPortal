@@ -1,27 +1,26 @@
 ﻿using Agumento.Core.Application.Interfaces;
-using response = Agumento.Core.Application.ResponseObject;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
+using Agumento.Core.Application.ResponseObject;
 
 namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
 {
-    public class GetAllOpenPositionsReportQuery : IRequest<IEnumerable<response.OpenPositionReport>>
+    public class GetAllOpenPositionsReportQuery : IRequest<PaginationResponse<OpenPositionReport>>
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }
-        public class GetAllOpenPositionsReportQueryHandler : IRequestHandler<GetAllOpenPositionsReportQuery, IEnumerable<response.OpenPositionReport>>
+        public class GetAllOpenPositionsReportQueryHandler : IRequestHandler<GetAllOpenPositionsReportQuery, PaginationResponse<OpenPositionReport>>
         {
             private readonly IApplicationDbContext _context;
             public GetAllOpenPositionsReportQueryHandler(IApplicationDbContext context)
             {
                 _context = context;
             }
-            public async Task<IEnumerable<response.OpenPositionReport>> Handle(GetAllOpenPositionsReportQuery query, CancellationToken cancellationToken)
+            public async Task<PaginationResponse<OpenPositionReport>> Handle(GetAllOpenPositionsReportQuery query, CancellationToken cancellationToken)
             {
                 var openPositionReports = await GetOpenPositionsReport(query);
                 return openPositionReports;
             }
-            private async Task<IEnumerable<response.OpenPositionReport>> GetOpenPositionsReport(GetAllOpenPositionsReportQuery query)
+            private async Task<PaginationResponse<OpenPositionReport>> GetOpenPositionsReport(GetAllOpenPositionsReportQuery query)
             {
                 var result = await (from op in _context.OpenPositions
                                     join acc in _context.Accounts on op.AccountId equals acc.Id
@@ -30,7 +29,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                     from cp in cpGroup.DefaultIfEmpty()
                                     group op by new { op.Id, acc.AccountName, pr.ProjectName } into grouped
                                     orderby grouped.First().CreatedOn descending
-                                    select new response.OpenPositionReport
+                                    select new OpenPositionReport
                                     {
                                         Id = grouped.Key.Id,
                                         JobId = grouped.First().JobId,
@@ -48,7 +47,7 @@ namespace Agumento.Core.Application.Features.OpenPositionFeatures.Queries
                                         Location = grouped.First().Location,
                                         TotalApplied = grouped.Select(x => x.CandidateProfiles.Count).FirstOrDefault(),
                                         PostedOn = grouped.First().CreatedOn
-                                    }).Skip((query.PageNumber - 1) * query.PageSize).Take(query.PageSize).ToListAsync();
+                                    }).PaginateAsync(query.PageSize, query.PageNumber); 
                 return result;
             }
         }
