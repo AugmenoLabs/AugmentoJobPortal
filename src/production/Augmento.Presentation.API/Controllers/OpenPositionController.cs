@@ -86,5 +86,11 @@ namespace Augmento.Presentation.API.Controllers
         {
             return Ok(await Mediator.Send(new GetOpenPositionScreeningQuery { Id = positionId }));
         }
+
+        [HttpGet("WorkflowDetails/{openPositionId}")]
+        public async Task<IActionResult> GetAllWorkflowDetails(Guid openPositionId)
+        {
+            return Ok(await Mediator.Send(new GetOpenPositionWorkflowDetailsQuery { OpenPositionId = openPositionId }));
+        }
     }
 }
